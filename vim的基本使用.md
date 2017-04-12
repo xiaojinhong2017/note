@@ -60,6 +60,109 @@ $ sudo apt-get install vim
 
 9.替换 r
 
+## 文件的归档和压缩
+
+* 使用gzip和gunzip对文件进行压缩和解压缩
+
+* 使用bzip和bunzip2对文件进行压缩和解压缩
+
+* 使用tar对文件和目录进行压缩和解压缩
+
+## 比如：
+```sh
+gzip filename 
+bzip2 filename
+gunzip filename
+bunzip2 filename 
+tar czvf file.tar.gz dir
+tar cjvf file.tar.bz2 dir
+tar cJvf file.tar.xz dir 
+tar xvf file.tar.gz
+tar xvf file.tar.xz
+可用 man tar 查看指令功能c为create一个新文件z为创建.gz类型v为创建步骤f为文件名
+```
+## linux下的两种软件包管理机制
+软件包管理机制其实就是对操作系统上的应用软件进行管理的一种机制。为什么需要有软件包管理机制呢？因为影响用户对操作系统评价的决定性因素之一就是安装，升级和卸载应用软件了。对于日渐流行的 GNU/Linux 操作系统，必须得拥有简洁强大的软件包管理机制才可以。
+## linux下常见的两种软件包管理机制
+* RPM，是RPM Package Manager（RPM软件包管理器）的缩写，算是公认的行业标准。常用命令rpm， yum。
+
+* Deb软件包机制， 常用命令dpkg，apt。
+## Deb软件包机制的讲解
+
+### 本地安装包管理
+
+用于本地deb软件包的安装、卸载和查询软件包相关的信息，操作方便快捷，但是如果安装的软件包和其他软件包之间具有依赖关系，那么本地软件包管理不能很好的解决这种依赖问题。
+### 在线安装包管理
+
+用于在线安装、卸载以及查询软件包的相关信息，只要配置正确就可以通过网络来进行软件包的在线安装，这种方式就可以很好的解决软件包之间的依赖关系。
+## 相关的配置文件
+
+* /etc/apt/sources.list，包含deb软件包源的文件
+
+* /var/lib/apt/list/* 对软件源进行更新之后的本地文件
+
+* /var/cache/apt/archive，在线安装时软件包的下载目录
+
+* /var/log/dpkg.log，本地软件包管理的日志文件
+
+* /var/log/apt/*.log,在线软件包管理的日志文件
+
+## Deb软件包的基本操作
+### Deb软件包名称的组成
+**比如： sl_3.03-17_amd64.deb**
+```sh
+sl, 表示软件包名称
+3.03-17， 表示版本号和修订版本号
+amd64, 表示运行机器的平台架构
+deb， 表示deb软件包的后缀名
+```
+### 本地deb包操作命令
+
+* 软件包安装 dpkg -i sl_3.03-17_amd64.deb
+
+* 软件包卸载 dpkg -r sl
+
+* 软件包彻底卸载，移除所有配置文件 dpkg -P sl
+
+* 查看软件包的安装状态 dpkg -s sl
+
+* 查看软件包的安装路径 dpkg -L sl
+
+* 列出所有安装的软件包 dpkg –get-selections
+
+### 在线管理操作命令
+
+* 更新本地软件源 apt-get update
+
+* 软件包安装 apt-get install sl
+
+* 软件包卸载 apt-get remove sl
+
+* 软件包彻底卸载 apt-get remove - -purge sl
+
+* 二进制软件包下载 apt-get download sl
+
+* 软件包源码下载 apt-get source sl
+
+* 查看软件包的安装状态 apt-cache policy sl
+
+* 查看软件包的信息 apt-cache show sl （无论是否安装）
+
+* 升级软件包 apt-get upgrade
+
+### 安装对应的开发工具
+
+* atom 编辑器
+
+* chrome浏览器
+
+* gimp图形处理工具
+
+* shutter 截图工具
+
+* openssh-client 
+
+* openssh-server
 ## VNC install
 ```sh
 $ sudo dpkg -i vnc-5.3.3.deb

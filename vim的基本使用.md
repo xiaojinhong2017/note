@@ -163,6 +163,13 @@ deb， 表示deb软件包的后缀名
 * openssh-client 
 
 * openssh-server
+```sh
+1.ssh linux@192.168.1.164(对方的ip地址)//可以控制对方用户
+2.scp linux@192.168.1.164:/home/linux/文件名  . //将对方文件拷贝到当前目录下
+  scp 文件名 linux@192.168.1.164:/home/linux/文件名 //把自己的文件拷贝给对方
+3. sudo apt-get install  tasksel 选中 lamp
+  在自己的地址栏输入127.0.0.1
+```
 ## VNC install
 ```sh
 $ sudo dpkg -i vnc-5.3.3.deb
